@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade 4 English Grammar Quest: Do, Does, Don't & Doesn't</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, #f0fdf4 0%, #e0f2fe 100%);
+            user-select: none;
+        }
+        .font-display {
+            font-family: 'Fredoka', cursive, sans-serif;
+        }
+        .ethiopian-pattern {
+            background-color: #fbf8ef;
+            background-image: radial-gradient(#16a34a 0.75px, transparent 0.75px), radial-gradient(#dc2626 0.75px, #fbf8ef 0.75px);
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+        }
+        .bounce-gentle {
+            animation: bounceGentle 2s infinite ease-in-out;
+        }
+        @keyframes bounceGentle {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        .pop-in {
+            animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        @keyframes popIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .wiggle {
+            animation: wiggle 0.4s ease-in-out;
+        }
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-5deg); }
+            75% { transform: rotate(5deg); }
+        }
+    </style>
+</head>
+<body class="min-h-screen text-slate-800 flex flex-col justify-between">
+
+    <!-- Top Navigation Header -->
+    <header class="bg-emerald-600 text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-2">
+            <div class="flex items-center space-x-3">
+                <div class="bg-amber-400 text-emerald-900 w-12 h-12 rounded-full flex items-center justify-center font-bold text-2xl shadow-inner border-2 border-white">
+                    🦁
+                </div>
+                <div>
+                    <h1 class="font-display text-xl md:text-2xl font-bold tracking-wide">Grammar Safari!</h1>
+                    <p class="text-xs text-emerald-100">Ethiopian Grade 4 English • Do / Does / Don't / Doesn't</p>
+                </div>
+            </div>
+
+            <!-- Score & Stats Bar -->
+            <div class="flex items-center space-x-3 bg-emerald-700/60 px-4 py-1.5 rounded-full border border-emerald-500">
+                <div class="flex items-center space-x-1" title="Stars Earned">
+                    <span class="text-amber-300 text-xl"><i class="fa-solid font-bold fa-star"></i></span>
+                    <span id="score-display" class="font-display font-bold text-lg">0</span>
+                </div>
+                <div class="h-4 w-px bg-emerald-400"></div>
+                <div class="flex items-center space-x-1" title="Current Streak">
+                    <span class="text-orange-400 text-lg"><i class="fa-solid fa-fire"></i></span>
+                    <span id="streak-display" class="font-display font-bold text-lg">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="bg-white/80 backdrop-blur-md border-b border-slate-200 shadow-sm sticky top-[68px] z-40">
+        <div class="max-w-4xl mx-auto px-2 flex justify-around overflow-x-auto py-2 gap-1 text-sm md:text-base font-bold">
+            <button onclick="switchTab('learn')" id="tab-learn" class="tab-btn px-4 py-2 rounded-xl transition flex items-center gap-2 bg-emerald-100 text-emerald-800">
+                <i class="fa-solid fa-lightbulb text-amber-500"></i>
+                <span>Rule Book</span>
+            </button>
+            <button onclick="switchTab('fill')" id="tab-fill" class="tab-btn px-4 py-2 rounded-xl transition flex items-center gap-2 text-slate-600 hover:bg-slate-100">
+                <i class="fa-solid fa-pen-to-square text-blue-500"></i>
+                <span>Fill the Gap</span>
+            </button>
+            <button onclick="switchTab('sort')" id="tab-sort" class="tab-btn px-4 py-2 rounded-xl transition flex items-center gap-2 text-slate-600 hover:bg-slate-100">
+                <i class="fa-solid fa-boxes-packing text-purple-500"></i>
+                <span>Team Sorter</span>
+            </button>
+            <button onclick="switchTab('fix')" id="tab-fix" class="tab-btn px-4 py-2 rounded-xl transition flex items-center gap-2 text-slate-600 hover:bg-slate-100">
+                <i class="fa-solid fa-magnifying-glass text-rose-500"></i>
+                <span>Grammar Detective</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main class="max-w-4xl mx-auto p-4 w-full flex-grow my-2">
+
+        <!-- ================= SECTION 1: RULE BOOK (LEARN) ================= -->
+        <section id="view-learn" class="space-y-6">
+            <div class="bg-white p-6 rounded-3xl shadow-md border-2 border-emerald-100">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="text-4xl">📚</div>
+                    <div>
+                        <h2 class="font-display text-2xl font-bold text-emerald-800">Learn with Abebe the Lion!</h2>
+                        <p class="text-slate-600">Golden Grammar Rules for Grade 4</p>
+                    </div>
+                </div>
+
+                <!-- Rules Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
+                    <!-- Positive Rules Card -->
+                    <div class="bg-amber-50 border-2 border-amber-200 rounded-2xl p-5 shadow-sm">
+                        <div class="flex items-center gap-2 text-amber-800 font-bold text-lg mb-3">
+                            <i class="fa-solid fa-circle-check text-green-600"></i>
+                            <span>Positive Actions (Yes!)</span>
+                        </div>
+                        
+                        <div class="space-y-3">
+                            <div class="bg-white p-3 rounded-xl border border-amber-200 shadow-xs">
+                                <span class="bg-emerald-600 text-white font-bold px-2 py-0.5 rounded text-xs">DO</span>
+                                <p class="font-bold text-slate-700 mt-1">I / You / We / They</p>
+                                <p class="text-xs text-slate-500 italic">"I <strong class="text-emerald-600">do</strong> my homework every day."</p>
+                                <p class="text-xs text-slate-500 italic">"They <strong class="text-emerald-600">do</strong> sports at school."</p>
+                            </div>
+
+                            <div class="bg-white p-3 rounded-xl border border-amber-200 shadow-xs">
+                                <span class="bg-amber-500 text-white font-bold px-2 py-0.5 rounded text-xs">DOES</span>
+                                <p class="font-bold text-slate-700 mt-1">He / She / It / Single Name</p>
+                                <p class="text-xs text-slate-500 italic">"She <strong class="text-amber-600">does</strong> like Ethiopian tea."</p>
+                                <p class="text-xs text-slate-500 italic">"Abebe <strong class="text-amber-600">does</strong> his best!"</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Negative Rules Card -->
+                    <div class="bg-rose-50 border-2 border-rose-200 rounded-2xl p-5 shadow-sm">
+                        <div class="flex items-center gap-2 text-rose-800 font-bold text-lg mb-3">
+                            <i class="fa-solid fa-circle-xmark text-rose-600"></i>
+                            <span>Negative Actions (No!)</span>
+                        </div>
+
+                        <div class="space-y-3">
+                            <div class="bg-white p-3 rounded-xl border border-rose-200 shadow-xs">
+                                <span class="bg-rose-600 text-white font-bold px-2 py-0.5 rounded text-xs">DON'T</span>
+                                <p class="font-bold text-slate-700 mt-1">I / You / We / They</p>
+                                <p class="text-xs text-slate-500 italic">"We <strong class="text-rose-600">don't</strong> like lazy mornings."</p>
+                                <p class="text-xs text-slate-500 italic">"Cats <strong class="text-rose-600">don't</strong> fly."</p>
+                            </div>
+
+                            <div class="bg-white p-3 rounded-xl border border-rose-200 shadow-xs">
+                                <span class="bg-purple-600 text-white font-bold px-2 py-0.5 rounded text-xs">DOESN'T</span>
+                                <p class="font-bold text-slate-700 mt-1">He / She / It / Single Name</p>
+                                <p class="text-xs text-slate-500 italic">"He <strong class="text-purple-600">doesn't</strong> eat spicy chili."</p>
+                                <p class="text-xs text-slate-500 italic">"The lion <strong class="text-purple-600">doesn't</strong> sleep all day."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Easy Memory Trick -->
+                <div class="bg-emerald-50 border border-emerald-300 rounded-2xl p-4 flex items-center gap-4">
+                    <span class="text-3xl">💡</span>
+                    <div>
+                        <h3 class="font-bold text-emerald-900">Abebe's Golden Secret:</h3>
+                        <p class="text-sm text-emerald-800">
+                            <strong>He, She, It</strong> and <strong>Single Names</strong> (like <em>Chala</em> or <em>Helen</em>) love the letter <strong>'S'</strong>! So they always pick <strong>DOES</strong> or <strong>DOESN'T</strong>!
+                        </p>
+                    </div>
+                </div>
+
+                <div class="text-center mt-6">
+                    <button onclick="switchTab('fill')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-display text-lg font-bold px-8 py-3 rounded-2xl shadow-lg transition transform hover:-translate-y-1">
+                        Let's Play Games! 🚀
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SECTION 2: FILL THE GAP GAME ================= -->
+        <section id="view-fill" class="hidden space-y-4">
+            <div class="bg-white p-6 rounded-3xl shadow-md border-2 border-blue-100">
+                <!-- Header -->
+                <div class="flex justify-between items-center mb-4">
+                    <div>
+                        <span class="bg-blue-100 text-blue-800 font-bold px-3 py-1 rounded-full text-xs uppercase tracking-wide">Game 1</span>
+                        <h2 class="font-display text-2xl font-bold text-slate-800">Fill in the Missing Word</h2>
+                    </div>
+                    <div class="text-right">
+                        <span id="fill-progress" class="font-bold text-blue-600">Question 1 / 10</span>
+                    </div>
+                </div>
+
+                <!-- Contextual Banner -->
+                <div class="bg-blue-50 border border-blue-200 rounded-2xl p-6 text-center relative overflow-hidden my-4 min-h-[160px] flex flex-col justify-center items-center">
+                    <div id="fill-avatar" class="text-5xl mb-3 bounce-gentle">🦁</div>
+                    <p id="fill-sentence" class="font-display text-xl md:text-2xl text-slate-800 leading-relaxed">
+                        Sentence loading...
+                    </p>
+                    <p id="fill-hint" class="text-xs text-slate-500 mt-2 italic">Look closely at the subject!</p>
+                </div>
+
+                <!-- Answer Choices -->
+                <div class="grid grid-cols-2 gap-3 md:gap-4 mt-6">
+                    <button onclick="checkFillAnswer('do')" class="fill-btn bg-emerald-500 hover:bg-emerald-600 text-white font-display text-xl py-4 rounded-2xl shadow-md transition transform active:scale-95 font-bold">
+                        do
+                    </button>
+                    <button onclick="checkFillAnswer('does')" class="fill-btn bg-amber-500 hover:bg-amber-600 text-white font-display text-xl py-4 rounded-2xl shadow-md transition transform active:scale-95 font-bold">
+                        does
+                    </button>
+                    <button onclick="checkFillAnswer('don\'t')" class="fill-btn bg-rose-500 hover:bg-rose-600 text-white font-display text-xl py-4 rounded-2xl shadow-md transition transform active:scale-95 font-bold">
+                        don't
+                    </button>
+                    <button onclick="checkFillAnswer('doesn\'t')" class="fill-btn bg-purple-500 hover:bg-purple-600 text-white font-display text-xl py-4 rounded-2xl shadow-md transition transform active:scale-95 font-bold">
+                        doesn't
+                    </button>
+                </div>
+
+                <!-- Feedback Popup Area -->
+                <div id="fill-feedback" class="hidden mt-4 p-4 rounded-2xl text-center font-bold text-lg pop-in"></div>
+            </div>
+        </section>
+
+        <!-- ================= SECTION 3: TEAM SORTER GAME ================= -->
+        <section id="view-sort" class="hidden space-y-4">
+            <div class="bg-white p-6 rounded-3xl shadow-md border-2 border-purple-100">
+                <div class="flex justify-between items-center mb-2">
+                    <div>
+                        <span class="bg-purple-100 text-purple-800 font-bold px-3 py-1 rounded-full text-xs uppercase tracking-wide">Game 2</span>
+                        <h2 class="font-display text-2xl font-bold text-slate-800">Team Sorter</h2>
+                    </div>
+                    <span id="sort-score-text" class="text-sm font-bold text-purple-600">Match 5 Subjects!</span>
+                </div>
+
+                <p class="text-sm text-slate-600 mb-4">Which grammar team does this word belong to?</p>
+
+                <!-- Current Floating Subject Card -->
+                <div class="bg-gradient-to-r from-purple-500 to-indigo-600 text-white text-center py-6 px-4 rounded-2xl shadow-lg my-4 pop-in">
+                    <span class="text-xs uppercase tracking-widest text-purple-200 block mb-1">Current Subject</span>
+                    <span id="sort-subject" class="font-display text-3xl font-bold tracking-wide">She</span>
+                </div>
+
+                <!-- Bucket Choices -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                    <button onclick="checkSortAnswer('do-team')" class="p-5 bg-gradient-to-br from-emerald-50 to-teal-100 border-2 border-emerald-300 hover:border-emerald-500 rounded-2xl text-center transition group transform active:scale-95">
+                        <div class="text-2xl font-bold text-emerald-800 font-display group-hover:scale-105 transition">
+                            Team DO / DON'T 🟢
+                        </div>
+                        <p class="text-xs text-emerald-600 mt-1">For: I, You, We, They, Plurals</p>
+                    </button>
+
+                    <button onclick="checkSortAnswer('does-team')" class="p-5 bg-gradient-to-br from-amber-50 to-orange-100 border-2 border-amber-300 hover:border-amber-500 rounded-2xl text-center transition group transform active:scale-95">
+                        <div class="text-2xl font-bold text-amber-800 font-display group-hover:scale-105 transition">
+                            Team DOES / DOESN'T 🟡
+                        </div>
+                        <p class="text-xs text-amber-600 mt-1">For: He, She, It, Single Names</p>
+                    </button>
+                </div>
+
+                <!-- Feedback Popup Area -->
+                <div id="sort-feedback" class="hidden mt-4 p-4 rounded-2xl text-center font-bold text-lg pop-in"></div>
+            </div>
+        </section>
+
+        <!-- ================= SECTION 4: GRAMMAR DETECTIVE ================= -->
+        <section id="view-fix" class="hidden space-y-4">
+            <div class="bg-white p-6 rounded-3xl shadow-md border-2 border-rose-100">
+                <div class="flex justify-between items-center mb-2">
+                    <div>
+                        <span class="bg-rose-100 text-rose-800 font-bold px-3 py-1 rounded-full text-xs uppercase tracking-wide">Game 3</span>
+                        <h2 class="font-display text-2xl font-bold text-slate-800">Grammar Detective 🔍</h2>
+                    </div>
+                    <span id="detective-counter" class="text-sm font-bold text-rose-600">Case 1 / 8</span>
+                </div>
+
+                <p class="text-sm text-slate-600 mb-4">Is this sentence correct or incorrect?</p>
+
+                <!-- Sentence Card -->
+                <div class="bg-slate-800 text-white p-6 rounded-2xl text-center shadow-lg relative my-4">
+                    <span class="absolute top-3 left-3 text-2xl">🔎</span>
+                    <p id="detective-sentence" class="font-display text-xl md:text-2xl text-amber-300">
+                        "He don't like coffee."
+                    </p>
+                </div>
+
+                <!-- True / False Buttons -->
+                <div class="grid grid-cols-2 gap-4 mt-4">
+                    <button onclick="checkDetectiveAnswer(true)" class="bg-emerald-500 hover:bg-emerald-600 text-white font-display text-xl py-4 rounded-2xl shadow-md flex items-center justify-center gap-2 font-bold transition active:scale-95">
+                        <i class="fa-solid fa-circle-check text-2xl"></i>
+                        <span>Correct!</span>
+                    </button>
+                    <button onclick="checkDetectiveAnswer(false)" class="bg-rose-500 hover:bg-rose-600 text-white font-display text-xl py-4 rounded-2xl shadow-md flex items-center justify-center gap-2 font-bold transition active:scale-95">
+                        <i class="fa-solid fa-circle-xmark text-2xl"></i>
+                        <span>Incorrect!</span>
+                    </button>
+                </div>
+
+                <!-- Feedback Area -->
+                <div id="detective-feedback" class="hidden mt-4 p-4 rounded-2xl text-center font-bold text-lg pop-in"></div>
+            </div>
+        </section>
+
+        <!-- Lion Mascot Companion Bar -->
+        <div class="bg-gradient-to-r from-amber-400 via-amber-300 to-yellow-400 p-4 rounded-3xl shadow-md border-2 border-white flex items-center gap-4 mt-6">
+            <div class="text-4xl bg-white p-2 rounded-full shadow-sm">🦁</div>
+            <div>
+                <p class="font-bold text-amber-900 text-sm md:text-base" id="lion-speech">
+                    "Gobez! Keep practicing every day to become an English champion!"
+                </p>
+                <p class="text-xs text-amber-800 font-semibold mt-0.5">— Abebe the Grammar Lion</p>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-slate-300 py-4 text-center text-xs mt-6">
+        <p>Made for Grade 4 Primary Students in Ethiopia • Interactive English Learning</p>
+    </footer>
+
+    <script>
+        // Web Audio Synthesizer for Fun Sound FX
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+        function playSound(type) {
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+
+            const now = audioCtx.currentTime;
+
+            if (type === 'success') {
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(440, now); // A4
+                osc.frequency.exponentialRampToValueAtTime(880, now + 0.2); // A5
+                gain.gain.setValueAtTime(0.2, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.3);
+                osc.start(now);
+                osc.stop(now + 0.3);
+            } else if (type === 'error') {
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(220, now);
+                osc.frequency.linearRampToValueAtTime(150, now + 0.25);
+                gain.gain.setValueAtTime(0.2, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.25);
+                osc.start(now);
+                osc.stop(now + 0.25);
+            } else if (type === 'click') {
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(600, now);
+                gain.gain.setValueAtTime(0.1, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.05);
+                osc.start(now);
+                osc.stop(now + 0.05);
+            }
+        }
+
+        let score = 0;
+        let streak = 0;
+
+        const lionPhrases = [
+            "Gobez! You are doing great!",
+            "Remember: 'He, She, It' take DOES or DOESN'T!",
+            "Practice makes perfect in English!",
+            "Arif tamari! (Smart student!)",
+            "Keep going, you're becoming a English Master!"
+        ];
+
+        function updateScore(points) {
+            score += points;
+            if (points > 0) {
+                streak++;
+            } else {
+                streak = 0;
+            }
+            document.getElementById('score-display').innerText = score;
+            document.getElementById('streak-display').innerText = streak;
+            
+            // Random lion comment on good streaks
+            if (streak > 0 && streak % 3 === 0) {
+                const randomMsg = lionPhrases[Math.floor(Math.random() * lionPhrases.length)];
+                document.getElementById('lion-speech').innerText = `"${randomMsg}"`;
+            }
+        }
+
+        function switchTab(tabName) {
+            playSound('click');
+            // Hide all tabs
+            document.getElementById('view-learn').classList.add('hidden');
+            document.getElementById('view-fill').classList.add('hidden');
+            document.getElementById('view-sort').classList.add('hidden');
+            document.getElementById('view-fix').classList.add('hidden');
+
+            // Reset tab styles
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.className = "tab-btn px-4 py-2 rounded-xl transition flex items-center gap-2 text-slate-600 hover:bg-slate-100";
+            });
+
+            // Show selected tab
+            document.getElementById(`view-${tabName}`).classList.remove('hidden');
+            
+            // Highlight button
+            const activeBtn = document.getElementById(`tab-${tabName}`);
+            activeBtn.className = "tab-btn px-4 py-2 rounded-xl transition flex items-center gap-2 bg-emerald-100 text-emerald-800 font-bold";
+
+            // Initialize or refresh game state if needed
+            if (tabName === 'fill') loadFillQuestion();
+            if (tabName === 'sort') loadSortQuestion();
+            if (tabName === 'fix') loadDetectiveQuestion();
+        }
+
+        const fillQuestions = [
+            {
+                sentence: "She _______ like drinking milk in the morning.",
+                answer: "doesn't",
+                avatar: "👧",
+                hint: "Subject is 'She'. Single female subject takes doesn't!"
+            },
+            {
+                sentence: "They _______ play football after school.",
+                answer: "do",
+                avatar: "⚽",
+                hint: "Subject is 'They' (plural). Use 'do' or 'don't'!"
+            },
+            {
+                sentence: "My brother _______ live in Addis Ababa.",
+                answer: "does",
+                avatar: "🏬",
+                hint: "My brother = 'He'. Singular male subject!"
+            },
+            {
+                sentence: "I _______ eat meat on fasting days.",
+                answer: "don't",
+                avatar: "🥗",
+                hint: "Subject 'I' always goes with 'don't' for negative!"
+            },
+            {
+                sentence: "_______ you speak Amharic and English?",
+                answer: "do",
+                avatar: "🗣️",
+                hint: "Questions with 'You' start with 'Do'!"
+            },
+            {
+                sentence: "Abebe _______ know how to ride a bicycle.",
+                answer: "doesn't",
+                avatar: "🚲",
+                hint: "'Abebe' is a single boy's name = He!"
+            },
+            {
+                sentence: "We _______ need an umbrella today. It is sunny!",
+                answer: "don't",
+                avatar: "☀️",
+                hint: "Subject 'We' uses 'don't' in negative!"
+            },
+            {
+                sentence: "_______ Helen help her mother at home?",
+                answer: "does",
+                avatar: "🏠",
+                hint: "Questions about single names (Helen) start with 'Does'!"
+            }
+        ];
+
+        let currentFillIdx = 0;
+
+        function loadFillQuestion() {
+            const q = fillQuestions[currentFillIdx];
+            document.getElementById('fill-sentence').innerText = q.sentence;
+            document.getElementById('fill-avatar').innerText = q.avatar;
+            document.getElementById('fill-hint').innerText = `Hint: ${q.hint}`;
+            document.getElementById('fill-progress').innerText = `Question ${currentFillIdx + 1} / ${fillQuestions.length}`;
+            
+            const feedback = document.getElementById('fill-feedback');
+            feedback.classList.add('hidden');
+        }
+
+        function checkFillAnswer(userAns) {
+            const q = fillQuestions[currentFillIdx];
+            const feedback = document.getElementById('fill-feedback');
+            feedback.classList.remove('hidden');
+
+            if (userAns === q.answer) {
+                playSound('success');
+                updateScore(10);
+                feedback.className = "mt-4 p-4 rounded-2xl text-center font-bold text-lg bg-emerald-100 text-emerald-800 border border-emerald-300 pop-in";
+                feedback.innerHTML = `🎉 <strong>Gobez! (Great job!)</strong> The full sentence is: <br><em class="text-emerald-900">"${q.sentence.replace('_______', '<u>' + q.answer + '</u>')}"</em>`;
+                
+                setTimeout(() => {
+                    currentFillIdx = (currentFillIdx + 1) % fillQuestions.length;
+                    loadFillQuestion();
+                }, 2000);
+            } else {
+                playSound('error');
+                updateScore(0);
+                feedback.className = "mt-4 p-4 rounded-2xl text-center font-bold text-lg bg-rose-100 text-rose-800 border border-rose-300 wiggle";
+                feedback.innerHTML = `❌ <strong>Try again!</strong> Remember: ${q.hint}`;
+            }
+        }
+
+        const sortSubjects = [
+            { name: "She (Helen)", team: "does-team" },
+            { name: "They (Students)", team: "do-team" },
+            { name: "He (Chala)", team: "does-team" },
+            { name: "We (Our Class)", team: "do-team" },
+            { name: "It (The Dog)", team: "does-team" },
+            { name: "I (Myself)", team: "do-team" },
+            { name: "You (My Friend)", team: "do-team" },
+            { name: "The Teacher (Single)", team: "does-team" }
+        ];
+
+        let currentSortIdx = 0;
+
+        function loadSortQuestion() {
+            const item = sortSubjects[currentSortIdx];
+            document.getElementById('sort-subject').innerText = item.name;
+            const feedback = document.getElementById('sort-feedback');
+            feedback.classList.add('hidden');
+        }
+
+        function checkSortAnswer(selectedTeam) {
+            const item = sortSubjects[currentSortIdx];
+            const feedback = document.getElementById('sort-feedback');
+            feedback.classList.remove('hidden');
+
+            if (selectedTeam === item.team) {
+                playSound('success');
+                updateScore(10);
+                feedback.className = "mt-4 p-4 rounded-2xl text-center font-bold text-lg bg-emerald-100 text-emerald-800 border border-emerald-300 pop-in";
+                feedback.innerText = `✨ Correct! "${item.name}" belongs to this team!`;
+
+                setTimeout(() => {
+                    currentSortIdx = (currentSortIdx + 1) % sortSubjects.length;
+                    loadSortQuestion();
+                }, 1500);
+            } else {
+                playSound('error');
+                updateScore(0);
+                feedback.className = "mt-4 p-4 rounded-2xl text-center font-bold text-lg bg-rose-100 text-rose-800 border border-rose-300 wiggle";
+                feedback.innerText = `💡 Oops! "He, She, It" go to DOES / DOESN'T team. "I, You, We, They" go to DO / DON'T team!`;
+            }
+        }
+
+        const detectiveCases = [
+            {
+                sentence: "He don't like spicy food.",
+                isCorrect: false,
+                explanation: "Incorrect! 'He' takes DOESN'T, so it should be: 'He DOESN'T like spicy food.'"
+            },
+            {
+                sentence: "She does her homework every evening.",
+                isCorrect: true,
+                explanation: "Correct! 'She' takes DOES!"
+            },
+            {
+                sentence: "They doesn't go to school on Sunday.",
+                isCorrect: false,
+                explanation: "Incorrect! 'They' takes DON'T. Sentence should be: 'They DON'T go to school...'"
+            },
+            {
+                sentence: "I do my best in English class!",
+                isCorrect: true,
+                explanation: "Correct! 'I' takes DO!"
+            },
+            {
+                sentence: "The lion doesn't eat grass.",
+                isCorrect: true,
+                explanation: "Correct! 'The lion' (It) takes DOESN'T!"
+            },
+            {
+                sentence: "We does enjoy playing games together.",
+                isCorrect: false,
+                explanation: "Incorrect! 'We' takes DO, so it should be: 'We DO enjoy...'"
+            }
+        ];
+
+        let currentCaseIdx = 0;
+
+        function loadDetectiveQuestion() {
+            const c = detectiveCases[currentCaseIdx];
+            document.getElementById('detective-sentence').innerText = `"${c.sentence}"`;
+            document.getElementById('detective-counter').innerText = `Case ${currentCaseIdx + 1} / ${detectiveCases.length}`;
+            const feedback = document.getElementById('detective-feedback');
+            feedback.classList.add('hidden');
+        }
+
+        function checkDetectiveAnswer(userGuess) {
+            const c = detectiveCases[currentCaseIdx];
+            const feedback = document.getElementById('detective-feedback');
+            feedback.classList.remove('hidden');
+
+            if (userGuess === c.isCorrect) {
+                playSound('success');
+                updateScore(15);
+                feedback.className = "mt-4 p-4 rounded-2xl text-center font-bold text-lg bg-emerald-100 text-emerald-800 border border-emerald-300 pop-in";
+                feedback.innerHTML = `🕵️‍♂️ <strong>Great detective work!</strong> <br>${c.explanation}`;
+
+                setTimeout(() => {
+                    currentCaseIdx = (currentCaseIdx + 1) % detectiveCases.length;
+                    loadDetectiveQuestion();
+                }, 2200);
+            } else {
+                playSound('error');
+                updateScore(0);
+                feedback.className = "mt-4 p-4 rounded-2xl text-center font-bold text-lg bg-rose-100 text-rose-800 border border-rose-300 wiggle";
+                feedback.innerHTML = `🔎 <strong>Not quite!</strong> ${c.explanation}`;
+            }
+        }
+
+        window.onload = function() {
+            loadFillQuestion();
+        };
+    </script>
+</body>
+</html>
+
